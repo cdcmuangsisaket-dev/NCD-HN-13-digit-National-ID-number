@@ -104,19 +104,13 @@
                     <svg class="w-6 h-6 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
                     1. นำเข้าฐานข้อมูลเข้าสู่ Cloud (Admin)
                 </h2>
-                <p class="text-slate-500 mb-6 text-sm">ระบบจะบันทึก <span class="font-bold text-indigo-600">ทุกคอลัมน์</span> ที่อยู่ในไฟล์ Excel นี้ขึ้นคลาวด์ให้อัตโนมัติ เพื่อให้ User นำไปค้นหา</p>
+                <p class="text-slate-500 mb-6 text-sm">ระบบจะบันทึก <span class="font-bold text-indigo-600">ทุกคอลัมน์</span> ที่อยู่ในไฟล์ Excel นี้ขึ้นคลาวด์ให้อัตโนมัติ</p>
                 
                 <div class="space-y-5">
                     <div>
                         <label class="block font-medium text-slate-700 mb-2">เลือกไฟล์ฐานข้อมูล (DB.xlsx)</label>
                         <input type="file" id="dbFile" accept=".xlsx, .xls" class="w-full text-slate-500 file:mr-4 file:py-3 file:px-6 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer border border-slate-200 rounded-xl p-2 bg-slate-50">
-                    </div>
-                    <div>
-                        <label class="block font-medium text-slate-700 mb-2">คีย์ที่ใช้สำหรับอ้างอิงข้อมูล (Primary Key)</label>
-                        <select id="adminMatchKey" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white outline-none focus:border-indigo-500 text-slate-700">
-                            <option value="HN">ใช้คอลัมน์ "HN"</option>
-                            <option value="เลขบัตรประชาชน">ใช้คอลัมน์ "เลขบัตรประชาชน"</option>
-                        </select>
+                        <small class="text-slate-400 mt-2 block">* ระบบจะตรวจสอบหาคอลัมน์ "HN" หรือ "เลขบัตรประชาชน" ให้อัตโนมัติ</small>
                     </div>
                     <button onclick="processUploadDB()" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-4 rounded-xl transition shadow-lg flex items-center justify-center gap-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
@@ -132,19 +126,13 @@
                     <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     2. ค้นหาและจับคู่ข้อมูล (User)
                 </h2>
-                <p class="text-slate-500 mb-6 text-sm">อัปโหลดไฟล์ที่มีเฉพาะ HN ระบบจะกวาดข้อมูลทุกคอลัมน์จากฐานข้อมูลมาเติมให้อัตโนมัติ</p>
+                <p class="text-slate-500 mb-6 text-sm">อัปโหลดไฟล์ที่มี HN ระบบจะกวาดข้อมูลทุกคอลัมน์จากฐานข้อมูลมาเติมให้อัตโนมัติ</p>
 
                 <div class="space-y-5">
                     <div>
                         <label class="block font-medium text-slate-700 mb-2">ไฟล์รายชื่อที่ต้องการค้นหา (Target.xlsx)</label>
                         <input type="file" id="targetFile" accept=".xlsx, .xls" class="w-full text-slate-500 file:mr-4 file:py-3 file:px-6 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 cursor-pointer border border-slate-200 rounded-xl p-2 bg-slate-50">
-                    </div>
-                    <div>
-                        <label class="block font-medium text-slate-700 mb-2">ใช้คอลัมน์ใดในการค้นหา?</label>
-                        <select id="userMatchKey" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white outline-none focus:border-emerald-500 text-slate-700">
-                            <option value="HN">ค้นหาด้วย "HN"</option>
-                            <option value="เลขบัตรประชาชน">ค้นหาด้วย "เลขบัตรประชาชน"</option>
-                        </select>
+                        <small class="text-slate-400 mt-2 block">* ระบบจะตรวจสอบหาคอลัมน์ "HN" หรือ "เลขบัตรประชาชน" ให้อัตโนมัติ</small>
                     </div>
                     <button onclick="processMatchAndDownload()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 rounded-xl transition shadow-lg shadow-emerald-500/30 flex items-center justify-center gap-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
@@ -212,11 +200,9 @@
                 const userDoc = await userRef.get();
 
                 if (!userDoc.exists && !isAutoLogin) {
-                    // สมัครใหม่เมื่อเข้าครั้งแรก
                     await userRef.set({ password: password });
                     finishLogin(username);
                 } else if (userDoc.exists) {
-                    // ตรวจรหัสผ่าน
                     if (isAutoLogin || userDoc.data().password === password) {
                         finishLogin(username);
                     } else {
@@ -236,14 +222,10 @@
             currentUserId = username;
             isAdmin = (username === '10700' || username.toLowerCase() === 'admin');
             
-            // อัปเดต UI
             document.getElementById('header-user-text').textContent = `รหัส: ${username} ${isAdmin ? '(Admin)' : '(User)'}`;
             
-            if (isAdmin) {
-                document.getElementById('admin-upload-section').classList.remove('hidden');
-            } else {
-                document.getElementById('admin-upload-section').classList.add('hidden');
-            }
+            if (isAdmin) document.getElementById('admin-upload-section').classList.remove('hidden');
+            else document.getElementById('admin-upload-section').classList.add('hidden');
 
             localStorage.setItem('excel_uid', username);
             document.getElementById('login-screen').classList.add('hidden');
@@ -260,7 +242,7 @@
             document.getElementById('login-screen').classList.remove('hidden');
         }
 
-        // ================= 3. ฟังก์ชันอ่าน Excel =================
+        // ================= 3. ฟังก์ชันอ่าน Excel และ Auto-detect Key =================
         async function readExcel(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -279,10 +261,17 @@
             });
         }
 
+        function getMatchKey(dataArray) {
+            if (dataArray.length === 0) return null;
+            const keys = Object.keys(dataArray[0]);
+            if (keys.includes("HN")) return "HN";
+            if (keys.includes("เลขบัตรประชาชน")) return "เลขบัตรประชาชน";
+            return null; // ถ้าไม่เจอเลย
+        }
+
         // ================= 4. อัปโหลดข้อมูล DB (เฉพาะ Admin) =================
         async function processUploadDB() {
             const file = document.getElementById('dbFile').files[0];
-            const matchKey = document.getElementById('adminMatchKey').value;
             if (!file) return Toast.fire({ icon: 'warning', title: 'กรุณาเลือกไฟล์ Excel (DB)' });
 
             showLoader();
@@ -290,24 +279,23 @@
                 const data = await readExcel(file);
                 if (data.length === 0) throw new Error("ไม่พบข้อมูลในไฟล์ Excel");
 
+                // Auto-detect หัวคอลัมน์
+                const matchKey = getMatchKey(data);
+                if (!matchKey) throw new Error("ไฟล์ Excel ขาดคอลัมน์ 'HN' หรือ 'เลขบัตรประชาชน' (ระบบต้องการเพื่อใช้อ้างอิงข้อมูล)");
+
                 let batch = db.batch();
                 let count = 0;
                 let batchPromises = [];
                 let validCount = 0;
 
                 data.forEach(row => {
-                    // ใช้ HN หรือ เลขบัตร เป็น Document ID
                     const docId = String(row[matchKey] || '').trim();
                     if (docId) {
                         const docRef = db.collection('excel_records_central').doc(docId);
-                        
-                        // *** บันทึกข้อมูลทุกคอลัมน์ (row) ลงคลาวด์โดยไม่กรองทิ้ง ***
                         batch.set(docRef, row, { merge: true });
-                        
                         count++;
                         validCount++;
 
-                        // Firestore อนุญาต batch ละ 500
                         if (count === 490) {
                             batchPromises.push(batch.commit());
                             batch = db.batch();
@@ -320,7 +308,7 @@
                 
                 await Promise.all(batchPromises);
                 hideLoader();
-                Swal.fire({ icon: 'success', title: 'อัปโหลดสำเร็จ!', text: `บันทึกข้อมูลแล้ว ${validCount} รายการ (เก็บทุกคอลัมน์)`, confirmButtonColor: '#4f46e5', customClass: { popup: 'rounded-3xl' } });
+                Swal.fire({ icon: 'success', title: 'อัปโหลดสำเร็จ!', text: `บันทึกข้อมูลแล้ว ${validCount} รายการ (ใช้คอลัมน์ '${matchKey}' เป็นตัวอ้างอิง)`, confirmButtonColor: '#4f46e5', customClass: { popup: 'rounded-3xl' } });
                 document.getElementById('dbFile').value = '';
             } catch (error) {
                 hideLoader();
@@ -331,51 +319,48 @@
         // ================= 5. ค้นหาและจับคู่ (User) =================
         async function processMatchAndDownload() {
             const file = document.getElementById('targetFile').files[0];
-            const matchKey = document.getElementById('userMatchKey').value;
             if (!file) return Toast.fire({ icon: 'warning', title: 'กรุณาเลือกไฟล์เป้าหมาย (Target)' });
 
             showLoader();
             try {
                 const targetData = await readExcel(file);
+                if (targetData.length === 0) throw new Error("ไม่พบข้อมูลในไฟล์ Excel ที่อัปโหลด");
+
+                // Auto-detect หัวคอลัมน์
+                const matchKey = getMatchKey(targetData);
+                if (!matchKey) throw new Error("ไฟล์ Excel ขาดคอลัมน์ 'HN' หรือ 'เลขบัตรประชาชน' (ระบบต้องการเพื่อใช้อ้างอิงในการค้นหา)");
                 
-                // ดึงข้อมูลทั้งหมดจาก Central Database มาไว้ในหน่วยความจำชั่วคราว
                 const snapshot = await db.collection('excel_records_central').get();
                 const dbLookup = {};
                 
-                // สร้าง Lookup Table ไว้ค้นหาไวๆ
                 snapshot.forEach(doc => {
                     const data = doc.data();
                     const id = String(data[matchKey] || '').trim();
-                    if (id) dbLookup[id] = data; // ข้อมูลทุกคอลัมน์จะอยู่ใน dbLookup[id]
+                    if (id) dbLookup[id] = data;
                 });
 
                 let matchCount = 0;
 
-                // วนลูปจับคู่ทีละแถว
                 const resultData = targetData.map(row => {
                     const id = row[matchKey] ? String(row[matchKey]).trim() : null;
                     if (id && dbLookup[id]) {
                         matchCount++;
-                        // นำคอลัมน์เก่าในไฟล์ตั้งต้น (row) มารวมกับคอลัมน์จาก DB (dbLookup)
-                        // หากชื่อคอลัมน์ซ้ำกัน ข้อมูลใน Target จะถูกคงไว้เป็นหลัก
                         return { ...dbLookup[id], ...row }; 
                     }
-                    return row; // ถ้าไม่เจอ ปล่อยข้อมูลไว้เหมือนเดิม
+                    return row;
                 });
 
-                // สร้างไฟล์ Excel
                 const newSheet = XLSX.utils.json_to_sheet(resultData);
                 const newWorkbook = XLSX.utils.book_new();
                 XLSX.utils.book_append_sheet(newWorkbook, newSheet, "Result");
                 
-                // ดาวน์โหลด
                 XLSX.writeFile(newWorkbook, `Result_Matched_${new Date().getTime()}.xlsx`);
                 
                 hideLoader();
                 Swal.fire({ 
                     icon: 'success', 
                     title: 'จับคู่และสร้างไฟล์สำเร็จ!', 
-                    text: `ค้นพบและเติมข้อมูลให้ทั้งหมด ${matchCount} จาก ${targetData.length} รายการ`,
+                    text: `ค้นพบและเติมข้อมูลให้ทั้งหมด ${matchCount} จาก ${targetData.length} รายการ (ค้นหาผ่าน '${matchKey}')`,
                     confirmButtonColor: '#10b981', 
                     customClass: { popup: 'rounded-3xl' } 
                 });
